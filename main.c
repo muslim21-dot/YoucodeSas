@@ -67,13 +67,10 @@ void Menu()
         case 6 :
             Rechercher();
             break;
-
-
-
-
+        default    :
+            printf("au revoir!");
+            break;
         }
-
-
     }
     while(choix!=8);
 }
@@ -213,13 +210,6 @@ void Modifier(int Nouveau_numero_unique)
                 for(j=i;j<total_Etudiant;j++){
                    Etudiant[j] = Etudiant[j+1];
                 }
-              /*  strcpy(Etudiant[i].nom,Etudiant[i+1].nom);
-                strcpy(Etudiant[i].prenom,Etudiant[i+1].prenom);
-                Etudiant[i].date_naissance.jour=Etudiant[i+1].date_naissance.jour;
-                Etudiant[i].date_naissance.mois=Etudiant[i+1].date_naissance.mois;
-                Etudiant[i].date_naissance.ans=Etudiant[i+1].date_naissance.ans;
-                strcpy(Etudiant[i].departement,Etudiant[i+1].departement);
-                Etudiant[i].notegenerale=Etudiant[i+1].notegenerale;*/
                 total_Etudiant--;
                 break;
             }
@@ -311,9 +301,6 @@ void Modifier(int Nouveau_numero_unique)
 
 //------------------kandkhol ra9m wkanaffichi lar9am li kbr mn dak ra9m li dkhlti------------------
 
-
-
-
         int nbr_comparaison;
         printf("enterz le nomber que vous comparer : ");
         scanf("%d",&nbr_comparaison);
@@ -329,9 +316,9 @@ void Modifier(int Nouveau_numero_unique)
             for(j=i+1;j<total_Etudiant;j++){
 
              if(Etudiant[i].notegenerale<Etudiant[j].notegenerale){
-                    tmp.notegenerale = Etudiant[i].notegenerale;
-                    Etudiant[i].notegenerale = Etudiant[j].notegenerale;
-                    Etudiant[j].notegenerale = tmp.notegenerale;
+                    tmp = Etudiant[i];
+                    Etudiant[i] = Etudiant[j];
+                    Etudiant[j] = tmp;
 
             }
             }
@@ -359,7 +346,7 @@ void Modifier(int Nouveau_numero_unique)
                  if(conteur==0)
                     printf("Null !");
                  else
-                    printf("le nombre d etudiants ayant reussi dans %s est : %d ",departement_recherche,conteur);
+                    printf("le nombre d etudiants ayant reussi 10 dans %s est : %d ",departement_recherche,conteur);
 
         }
 //------------------------------------------------------------------------------------------------------
@@ -409,23 +396,11 @@ void Rechercher(){
             }
         }
     }
-/*void Tri_nom(){
-           etudiant tmp ;
-           for(i=0;i<total_Etudiant;i++){
-               for(j=i+1;j<total_Etudiant;j++){
-                if(strcmp(Etudiant[i].nom,Etudiant[j].nom)>0){
-
-                   tmp.nom = Etudiant[i].nom;
-                   Etudiant[i].nom = Etudiant[j].nom;
-                   Etudiant[j].nom = tmp.nom;
-                }
-               }
-           }
-
-*/
 //--------------------------------------------------------------------------------------------------------
     int main()
     {
+
+
     strcpy(Etudiant[0].nom, "Dupont");
     strcpy(Etudiant[0].prenom, "Jean");
     Etudiant[0].date_naissance.jour = 12;
@@ -440,7 +415,7 @@ void Rechercher(){
     strcpy(Etudiant[1].prenom, "Lucie");
     Etudiant[1].date_naissance.jour = 10;
     Etudiant[1].date_naissance.mois = 3;
-    Etudiant[1].date_naissance.ans = 2000;
+    Etudiant[1].date_naissance.ans = 2002;
     strcpy(Etudiant[1].departement, "Informatique");
     Etudiant[1].notegenerale = 10.5;
     Etudiant[1].Numero_unique= id++;
@@ -460,7 +435,7 @@ void Rechercher(){
     strcpy(Etudiant[3].prenom, "Pierre");
     Etudiant[3].date_naissance.jour = 1;
     Etudiant[3].date_naissance.mois = 10;
-    Etudiant[3].date_naissance.ans = 2001;
+    Etudiant[3].date_naissance.ans = 2002;
     strcpy(Etudiant[3].departement, "Physique");
     Etudiant[3].notegenerale = 11.5;
     Etudiant[3].Numero_unique= id++;
@@ -476,7 +451,9 @@ void Rechercher(){
     Etudiant[4].Numero_unique= id++;
     total_Etudiant++;
 
+    printf("==========================================\n");
+
     Menu();
 
         return 0;
-    }
+}
